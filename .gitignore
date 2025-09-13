@@ -1,10 +1,53 @@
-# Python-generated files
+# ----------------------------
+# Python
+# ----------------------------
 __pycache__/
-*.py[oc]
-build/
+*.py[cod]
+*.pyo
+*.pyd
+*.pdb
+*.so
+*.egg
+*.egg-info/
 dist/
+build/
 wheels/
-*.egg-info
+*.manifest
+*.spec
 
-# Virtual environments
-.venv
+# ----------------------------
+# Virtual Environments
+# ----------------------------
+.venv/
+venv/
+ENV/
+env/
+.uv/
+
+# ----------------------------
+# IDE / Editor files
+# ----------------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ----------------------------
+# Logs & OS files
+# ----------------------------
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
+
+# ----------------------------
+# Environment files (secrets)
+# ----------------------------
+.env
+.env.*
+!.env.example   # keep a safe template
+
+# ----------------------------
+# Project-specific
+# ----------------------------
+uv.lock         # lock file (ignore if not needed in repo)

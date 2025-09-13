@@ -1,0 +1,23 @@
+langchain
+langchain-community
+langchain-openai
+langgraph
+
+langchain-google-genai
+google-generativeai
+
+langchain-huggingface
+transformers
+huggingface-hub
+sentence-transformers
+
+faiss-cpu
+pydantic
+python-dotenv
+beautifulsoup4
+requests
+streamlit
+wikipedia 
+
+
+python-docx  # If you want DOCX support

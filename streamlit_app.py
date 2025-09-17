@@ -18,7 +18,7 @@ from src.graph_builder.graph_builder import GraphBuilder
 
 # Page configuration
 st.set_page_config(
-    page_title="🤖 RAG Search",
+    page_title="Agentic RAG Search",
     page_icon="🔍",
     layout="wide"
 )
@@ -123,7 +123,7 @@ def main():
     st.markdown("Upload your documents or provide URLs to start searching")
     
     # Document Source Selection
-    st.markdown("### 📁 Document Source")
+    st.markdown("### Document Source")
     
     source_option = st.radio(
         "Choose your document source:",
@@ -144,16 +144,16 @@ def main():
             )
             
             if uploaded_files:
-                st.success(f"✅ {len(uploaded_files)} file(s) uploaded successfully!")
+                st.success(f" {len(uploaded_files)} file(s) uploaded successfully!")
                 
                 # Show uploaded files
                 st.markdown("**Uploaded Files:**")
                 for file in uploaded_files:
                     file_size = len(file.getbuffer()) / 1024  # Size in KB
-                    st.markdown(f"- 📄 {file.name} ({file_size:.1f} KB)")
+                    st.markdown(f"-  {file.name} ({file_size:.1f} KB)")
                 
                 # Initialize button
-                if st.button("🚀 Process Uploaded Files", use_container_width=True):
+                if st.button(" Process Uploaded Files", use_container_width=True):
                     with st.spinner("Processing uploaded files..."):
                         file_paths, temp_dir = save_uploaded_files(uploaded_files)
                         rag_system, num_chunks = initialize_rag_with_files(file_paths=file_paths)
@@ -161,7 +161,7 @@ def main():
                         if rag_system:
                             st.session_state.rag_system = rag_system
                             st.session_state.initialized = True
-                            st.success(f"🎉 System ready with {num_chunks} document chunks!")
+                            st.success(f" System ready with {num_chunks} document chunks!")
                             st.rerun()
                         
                         # Clean up temp files
@@ -186,21 +186,21 @@ def main():
             for i, url in enumerate(urls, 1):
                 st.markdown(f"{i}. {url}")
             
-            if st.button("🚀 Process Custom URLs", use_container_width=True):
+            if st.button(" Process Custom URLs", use_container_width=True):
                 with st.spinner("Processing custom URLs..."):
                     rag_system, num_chunks = initialize_rag_with_files(urls=urls)
                     
                     if rag_system:
                         st.session_state.rag_system = rag_system
                         st.session_state.initialized = True
-                        st.success(f"🎉 System ready with {num_chunks} document chunks!")
+                        st.success(f" System ready with {num_chunks} document chunks!")
                         st.rerun()
     
     st.markdown("---")
     
     # Search interface (only show if system is initialized)
     if st.session_state.initialized:
-        st.markdown("### 🔍 Search Interface")
+        st.markdown("###  Search Interface")
         
         # Search interface - using columns for better layout
         col1, col2 = st.columns([4, 1])
@@ -213,7 +213,7 @@ def main():
         
         with col2:
             st.write("")  # Add some space
-            submit = st.button("🔍 Search", use_container_width=True)
+            submit = st.button(" Search", use_container_width=True)
         
         # Process search
         if submit and question:
@@ -234,11 +234,11 @@ def main():
                     })
                     
                     # Display answer
-                    st.markdown("### 💡 Answer")
+                    st.markdown("###  Answer")
                     st.success(result['answer'])
                     
                     # Show retrieved docs with wider layout
-                    with st.expander("📄 Source Documents", expanded=True):
+                    with st.expander(" Source Documents", expanded=True):
                         if 'retrieved_docs' in result and result['retrieved_docs']:
                             # Create columns for better document display
                             if len(result['retrieved_docs']) > 1:
@@ -282,18 +282,18 @@ def main():
                         else:
                             st.warning("No source documents found in result")
                     
-                    st.caption(f"⏱️ Response time: {elapsed_time:.2f} seconds")
+                    st.caption(f" Response time: {elapsed_time:.2f} seconds")
             else:
                 st.error("System not initialized. Please load documents first.")
     
     else:
-        st.info("👆 Please select and load your documents above to start searching")
+        st.info(" Please select and load your documents above to start searching")
     
     st.markdown("---")
     
     # Show history with improved layout
     if st.session_state.history:
-        st.markdown("### 📜 Recent Searches")
+        st.markdown("###  Recent Searches")
         
         for i, item in enumerate(reversed(st.session_state.history[-3:])):  # Show last 3
             with st.container():
@@ -302,7 +302,7 @@ def main():
                 
                 with q_col:
                     st.markdown(f"**Q{len(st.session_state.history)-i}:** {item['question']}")
-                    st.caption(f"⏱️ {item['time']:.2f}s")
+                    st.caption(f" {item['time']:.2f}s")
                 
                 with a_col:
                     st.markdown(f"**A:** {item['answer'][:300]}{'...' if len(item['answer']) > 300 else ''}")
@@ -312,7 +312,7 @@ def main():
     # Reset system button
     if st.session_state.initialized:
         st.markdown("---")
-        if st.button("🔄 Reset System", use_container_width=True):
+        if st.button(" Reset System", use_container_width=True):
             st.session_state.rag_system = None
             st.session_state.initialized = False
             st.session_state.history = []

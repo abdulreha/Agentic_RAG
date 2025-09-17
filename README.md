@@ -15,3 +15,6 @@ DEBUG: Starting smart fallback approach with 4 retrieved docs
 DEBUG: Document answer: The uploaded documents don't contain sufficient information about Indian history.  The provided text...
 DEBUG: Document answer incomplete, trying Wikipedia fallback
 DEBUG: Using Wikipedia fallback for additional information
+
+![Agentic RAG Flow](https://github.com/abdulreha/Agentic_RAG/blob/f8411928fd49dc7c49d86eb991a6a4ffc4c2c9c0/Agentic%20RAG%20FLOW.png) 
+

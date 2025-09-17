@@ -119,7 +119,7 @@ def main():
     init_session_state()
     
     # Title
-    st.title("🔍 RAG Document Search")
+    st.title("Agentic RAG Document Search")
     st.markdown("Upload your documents or provide URLs to start searching")
     
     # Document Source Selection
